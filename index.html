@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">  
+    <head>    
+        <title>Pagina con Javascript</title>    
+    <meta charset="UTF-8">
+    </head>  
+    <body>
+        <h1>Tarea corta #3 - Josué Zeledón Ruiz</h1>
+        <strong>Comentarios adicionales </strong><br>
+        <textarea id="comentario" cols="40" rows="5" onkeyup="verificar(this, 230, document.getElementById('caracteres_restantes'));"
+            onkeydown="verificar(this, 230, document.getElementById('caracteres_restantes'));"> </textarea>
+
+        <br>
+        <br> (Caracteres máximos: 230)
+        <p id="caracteres_restantes"> </p>
+
+        <br>
+        Parte 2:
+        <br>
+        <hola-mundo>NO IMPORTA LO QUE PONGA AQUÍ, SIEMPRE ME DARÁ UN HOLA MUNDO</hola-mundo>
+
+        <!--Funcion que chequea cada vez que se hace un onkeyup o unkeydown por la cantidad de caracteres restantes-->
+        <script>
+        
+            function verificar(control, max, progressText)
+            {
+                var resta = (max - control.value.length);
+    
+                if (resta >= 0)
+                {
+                    progressText.innerHTML = "Caracteres restantes : " + resta;
+                }
+                else
+                {
+                    control.value = control.value.substring(0,230);
+                }
+            }
+        </script>
+        
+        <script type="text/javascript">
+    
+            // Se define una nueva clase o elemento html
+            class HolaMundo extends HTMLElement{
+                constructor(){
+                    super();
+                    //var shadowRoot = this.attachShadow({mode: 'open'});
+                    //shadowRoot.innerHTML = `<p>¡Hola mundo!</p>`;
+                    this.innerHTML = ("¡Hola mundo!");
+                }
+            }
+            customElements.define('hola-mundo', HolaMundo);
+        
+        </script>
+    </body>
+    
+
+</html>
